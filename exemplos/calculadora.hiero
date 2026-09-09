@@ -1,0 +1,50 @@
+𓀀 tkinter 𓀁 tk
+
+expressao = ""
+
+𓀂 atualizar(txt):
+    𓀃 expressao
+    expressao += txt
+    display.set(expressao)
+
+𓀂 limpar():
+    𓀃 expressao
+    expressao = ""
+    display.set(expressao)
+
+𓀂 calcular():
+    𓀃 expressao
+    𓀄:
+        resultado = str(eval(expressao))
+    𓀅:
+        resultado = "Erro"
+    expressao = resultado
+    display.set(expressao)
+
+janela = tk.Tk()
+janela.title("Calculadora HieroLang")
+janela.resizable(False, False)
+
+display = tk.StringVar()
+display.set("")
+
+entrada = tk.Entry(janela, textvariable=display, font=("Consolas", 24), justify="right", width=12, bd=8, relief="ridge")
+entrada.grid(row=0, column=0, columnspan=4)
+
+botoes = [
+    ("7", 1, 0), ("8", 1, 1), ("9", 1, 2), ("/", 1, 3),
+    ("4", 2, 0), ("5", 2, 1), ("6", 2, 2), ("*", 2, 3),
+    ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("-", 3, 3),
+    ("0", 4, 0), (".", 4, 1), ("=", 4, 2), ("+", 4, 3),
+]
+
+𓀆 texto, linha, coluna 𓀇 botoes:
+    𓀈 texto == "=":
+        cmd = calcular
+    𓀉:
+        cmd = 𓀊 t=texto: atualizar(t)
+    tk.Button(janela, text=texto, width=5, height=2, font=("Consolas", 16), command=cmd).grid(row=linha, column=coluna)
+
+tk.Button(janela, text="C", width=23, height=2, font=("Consolas", 16), command=limpar).grid(row=5, column=0, columnspan=4)
+
+janela.mainloop()
