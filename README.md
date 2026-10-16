@@ -61,3 +61,7 @@ ali ele é token do tipo `STRING`, não `NAME`.
 - Erro de execução aponta a linha certa do `.hiero`, mas mostra o trecho já
   traduzido para Python, não o hieróglifo original.
 - Sem testes automatizados.
+
+## Licença
+
+Código sob a licença MIT (arquivo `LICENSE`).
